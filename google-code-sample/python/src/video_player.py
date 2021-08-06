@@ -303,7 +303,34 @@ class VideoPlayer:
         Args:
             search_term: The query to be used in search.
         """
-        print("search_videos needs implementation")
+        search_term_copy = search_term
+        videos = self._video_library.get_all_videos()
+        video_titles = []
+        counter = 1
+        for video in videos:
+            if search_term_copy.lower() in video.title.lower():
+                video_titles.append([])
+                video_titles[counter-1].append(counter)
+                video_titles[counter-1].append(video)
+                counter = counter + 1
+        if len(video_titles) == 0:
+            print("No search results for " + search_term)
+        else:
+            print("Here are the results for " + search_term + ":")
+            for video in video_titles:
+                tags = ""
+                print(str(video[0]) + ") {} ({})".format(video[1].title,
+                                                         video[1].video_id), end=' ')
+                for tag in video[1].tags:
+                    tags = tags + str(tag) + ' '
+                print("[{}]".format(tags[:len(tags)-1]))
+            print(
+                "Would you like to play any of the above? If yes, specify the number of the video.")
+            print("If your answer is not a valid number, we will assume it's a no.")
+            answer = input("")
+            if answer.isnumeric():
+                if not ((int(answer) < 1) or (int(answer) > len(video_titles))):
+                    self.play_video(video_titles[int(answer)-1][1].video_id)
 
     def search_videos_tag(self, video_tag):
         """Display all videos whose tags contains the provided tag.
@@ -311,7 +338,36 @@ class VideoPlayer:
         Args:
             video_tag: The video tag to be used in search.
         """
-        print("search_videos_tag needs implementation")
+        video_tag_copy = video_tag
+        videos = self._video_library.get_all_videos()
+        video_tags = []
+        counter = 1
+        for video in videos:
+            for tag in video.tags:
+                if video_tag_copy.lower() == tag.lower():
+                    video_tags.append([])
+                    video_tags[counter-1].append(counter)
+                    video_tags[counter-1].append(video)
+                    counter = counter + 1
+                    break
+        if len(video_tags) == 0:
+            print("No search results for " + video_tag)
+        else:
+            print("Here are the results for " + video_tag + ":")
+            for video in video_tags:
+                tags = ""
+                print(str(video[0]) + ") {} ({})".format(video[1].title,
+                                                         video[1].video_id), end=' ')
+                for tag in video[1].tags:
+                    tags = tags + str(tag) + ' '
+                print("[{}]".format(tags[:len(tags)-1]))
+            print(
+                "Would you like to play any of the above? If yes, specify the number of the video.")
+            print("If your answer is not a valid number, we will assume it's a no.")
+            answer = input("")
+            if answer.isnumeric():
+                if not ((int(answer) < 1) or (int(answer) > len(video_tags))):
+                    self.play_video(video_tags[int(answer)-1][1].video_id)
 
     def flag_video(self, video_id, flag_reason=""):
         """Mark a video as flagged.
