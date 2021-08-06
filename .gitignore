@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Editor files
 out/
 .idea/
@@ -109,3 +110,9 @@ dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
+=======
+cpp
+java
+solutions
+coding-challenge-instructions.pdf
+>>>>>>> 31d6f6298b659945b99a814e89092fecb1e007fc
