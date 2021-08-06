@@ -29,6 +29,12 @@ nb-configuration.xml
 .code-workspace
 .DS_Store
 
+# Other files
+cpp/
+java/
+solutions/
+coding-challenge-instructions.pdf
+
 
 # Python files
 # Byte-compiled / optimized / DLL files
@@ -110,7 +116,3 @@ buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
 =======
-cpp
-java
-solutions
-coding-challenge-instructions.pdf
