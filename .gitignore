@@ -30,9 +30,9 @@ nb-configuration.xml
 .DS_Store
 
 # Other files
-cpp/
-java/
-solutions/
+/cpp
+/java
+/solutions
 coding-challenge-instructions.pdf
 
 
